@@ -1,33 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-  <meta charset="uft-8">
-    <title>Preguntas</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-    <link rel='stylesheet' type='text/css' media='only screen and (min-width: 530px) and (min-device-width:481px)' href='/stylesheets/wide.css'/>
-    <link rel='stylesheet' type='text/css' media='only screen and (max-width: 480)' href='/stylesheets/smartphone.css'/>
-  </head>
-  <body>
-  <div id="page-wrap">
-    <header class="main" id="h1">
-    	<h2>Quiz: el juego de las preguntas</h2>
-    </header>
-    <nav class="main" id="n1" role="navigation">
-    	<span><a href="/">Inicio</a></span>
-    	<span><a href="/quizes/question">Preguntas</a></span>
-    	<span><a href="/quizes/author">Autor</a></span>
-    </nav>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title> Preguntas </title>
+		<link rel='stylesheet' href='/stylesheets/style.css'>
+		<link rel='stylesheet' 
+        	type='text/css'
+        	media='only screen and (min-width: 530px) and (min-device-width: 481px)'
+        	href='/stylesheets/wide.css' />
+  		<link rel='stylesheet'
+        	type='text/css'
+        	media='only screen and (max-width: 480px)' 
+        	href='/stylesheets/smartphone.css' />
+	</head>
+	<body>
+		<div id="page-wrap">
+			<header class="main" id="h1">
+				<h2> Quiz: El juego de preguntas</h2>
+			</header>
 
-    <section class="main" id="s1">
-    	<%- body %>
-    </section>
+			<nav class="main" id="n1" role="navigation">
+	<span><a href="/">Inicio</a></span>
+                <span><a href="/quizes">Preguntas</a></span>
+                <span><a href="/author">Autor</a></span>
+            </nav>
 
-    <footer class="main" id="f1">
-    	<a href="http://es.wikipedia.org/wiki/quiz">
-    	¿Que es un Quiz?</a>
-    	<a href="https://github.com/seilamoro/myquiz.git"> github</a>
+             <section class="main" id="s1">
+                    <% if (errors.length) { %>
+                        <span id='ErrorMsgs'>
+                            Corregir errores:<br/>
+                            <% for (var i in errors) { %>
+                        <span> <%= errors[i].message %> </span><br/>
+                        <% } %>
+                        </span>
+                    <% } %>
+            	<%- body %>
+            </section>
+
+			<footer class="main" id="f1">
+      <a href="http://es.wikipedia.org/wiki/quiz">
+      ¿Que es un Quiz?</a>
+      <a href="https://github.com/seilamoro/myquiz.git"> github</a>
 
     </footer>
-   </div>
-  </body>
+		</div>
+	</body>
 </html>

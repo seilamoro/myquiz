@@ -6,6 +6,8 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var partials = require('express-partials');
+var methodOverride = require('method-override');
+
 var routes = require('./routes/index');
 //var users = require('./routes/users');
 
@@ -22,6 +24,7 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
@@ -44,6 +47,7 @@ if (app.get('env') === 'development') {
         res.render('error', {
             message: err.message,
             error: err
+            , errors: []
         });
     });
 }
@@ -55,6 +59,7 @@ app.use(function(err, req, res, next) {
     res.render('error', {
         message: err.message,
         error: {}
+        , errors: []
     });
 });
 
